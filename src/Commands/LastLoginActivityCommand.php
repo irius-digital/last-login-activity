@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace IriusDigital\LastLoginActivity\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LastLoginActivityCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'last-login-activity';
 
     public $description = 'My command';
 
