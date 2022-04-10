@@ -4,8 +4,8 @@ namespace IriusDigital\LastLoginActivity\Traits;
 
 use IriusDigital\LastLoginActivity\Models\LoginActivity;
 
-trait LoginActivities {
-
+trait LoginActivities
+{
     /**
      * Fetches latest login ip address of user
      */

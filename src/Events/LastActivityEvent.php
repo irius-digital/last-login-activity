@@ -3,7 +3,6 @@
 namespace IriusDigital\LastLoginActivity\Events;
 
 use Carbon\Carbon;
-use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -30,7 +29,7 @@ class LastActivityEvent
                 'last_login_ip' => $this->request->getClientIp(),
             ]);
             $event->user->loginActivities()->create([
-               'ip_address' => $this->request->getClientIp()
+               'ip_address' => $this->request->getClientIp(),
             ]);
         }
     }

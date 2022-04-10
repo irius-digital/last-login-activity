@@ -4,7 +4,6 @@ namespace IriusDigital\LastLoginActivity;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use IriusDigital\LastLoginActivity\Commands\LastLoginActivityCommand;
 
 class LastLoginActivityServiceProvider extends PackageServiceProvider
 {
