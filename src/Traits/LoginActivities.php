@@ -7,7 +7,7 @@ use IriusDigital\LastLoginActivity\Models\LoginActivity;
 trait LoginActivities
 {
     /**
-     * Fetches latest login ip address of user
+     * Fetches latest login ip address of user.
      */
     public function latestLoggedIp()
     {
@@ -15,7 +15,7 @@ trait LoginActivities
     }
 
     /**
-     * Fetches all login activities of user
+     * Fetches all login activities of user.
      */
     public function loginActivities()
     {

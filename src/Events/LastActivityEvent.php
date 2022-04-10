@@ -24,10 +24,6 @@ class LastActivityEvent
     public function handle(Login $event)
     {
         if (config('last-login-activity.save_last_login.enabled')) {
-            $event->user->update([
-                'last_login_at' => Carbon::now()->toDateTimeString(),
-                'last_login_ip' => $this->request->getClientIp(),
-            ]);
             $event->user->loginActivities()->create([
                'ip_address' => $this->request->getClientIp(),
             ]);

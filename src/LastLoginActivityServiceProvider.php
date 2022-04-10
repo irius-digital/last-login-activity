@@ -12,7 +12,6 @@ class LastLoginActivityServiceProvider extends PackageServiceProvider
         $package
             ->name('last-login-activity')
             ->hasConfigFile()
-            ->hasMigration('create_last_login_activity_table')
             ->hasMigration('create_login_activities_table');
     }
 }

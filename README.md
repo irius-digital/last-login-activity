@@ -1,22 +1,14 @@
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
 
-# Package to get last login activity
+# Simple package to get and logged last login activity/activities
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/irius-digital/last-login-activity.svg?style=flat-square)](https://packagist.org/packages/irius-digital/last-login-activity)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/irius-digital/last-login-activity/run-tests?label=tests)](https://github.com/irius-digital/last-login-activity/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/irius-digital/last-login-activity/Check%20&%20fix%20styling?label=code%20style)](https://github.com/irius-digital/last-login-activity/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/irius-digital/last-login-activity.svg?style=flat-square)](https://packagist.org/packages/irius-digital/last-login-activity)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/last-login-activity.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/last-login-activity)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+Simple package where you can save user login activity (my first time to create a package) apologies.
 
 ## Installation
 
@@ -43,20 +35,42 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'save_last_login' => [
+        'enabled' => env('SAVE_LAST_LOGIN', true),
+    ],
 ];
 ```
 
-Optionally, you can publish the views using
+## Usage
+Add this to your EventServiceProvider.php
+```php
+use Illuminate\Auth\Events\Login;
+use IriusDigital\LastLoginActivity\Events\LastActivityEvent;
 
-```bash
-php artisan vendor:publish --tag="last-login-activity-views"
+
+protected $listen = [
+        Login::class => [
+            LastActivityEvent::class,
+        ],
+    ];
 ```
 
-## Usage
-
+Add to your user model
 ```php
-$lastLoginActivity = new IriusDigital\LastLoginActivity();
-echo $lastLoginActivity->echoPhrase('Hello, IriusDigital!');
+use IriusDigital\LastLoginActivity\Traits\LoginActivities;
+
+class User extends Authenticatable
+{
+    ...
+    use LoginActivities;
+    
+```
+
+Then you can access your user model with
+```php
+    $user->latestLoggedIp
+    
+    $user->loginActivities
 ```
 
 ## Testing
