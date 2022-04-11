@@ -2,7 +2,6 @@
 
 namespace IriusDigital\LastLoginActivity\Events;
 
-use Carbon\Carbon;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
